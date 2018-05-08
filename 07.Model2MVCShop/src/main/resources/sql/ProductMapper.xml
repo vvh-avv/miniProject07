@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ProductMapper">
+
+	<resultMap type="product" id="productMap">
+		<result property="prodNo" column="prod_no" jdbcType="NUMERIC"/>
+		<result property="prodName" column="prod_name" jdbcType="VARCHAR"/>
+		<result property="prodDetail" column="prod_detail" jdbcType="VARCHAR"/>
+		<result property="manuDate" column="manufacture_day" jdbcType="VARCHAR"/>
+		<result property="price" column="price" jdbcType="NUMERIC"/>
+		<result property="fileName" column="image_file" jdbcType="VARCHAR"/>
+		<result property="regDate" column="reg_date" jdbcType="DATE"/>
+		<result property="proTranCode" column="tran_status_code" jdbcType="CHAR"/>
+	</resultMap>
+
+	<insert id="insertProduct" parameterType="product">
+		INSERT
+		INTO product(prod_no, prod_name, prod_detail, manufacture_day, price, image_file, reg_date)
+		VALUES( SEQ_product_prod_no.NEXTVAL, #{prodName}, #{prodDetail}, #{manuDate}, #{price}, #{fileName}, SYSDATE )
+	</insert>
+
+	<select id="findProduct" parameterType="int" resultMap="productMap">
+		SELECT
+		prod_no, prod_name, prod_detail, manufacture_day, price, image_file, reg_date
+		FROM product
+		WHERE prod_no = #{value}
+	</select>
+
+	<update id="updateProduct" parameterType="product">
+		UPDATE product
+		SET prod_name=#{prodName}, prod_detail=#{prodDetail}, manufacture_day=#{manuDate}, price=#{price}, image_file=#{fileName}
+		WHERE prod_no = #{prodNo}
+	</update>
+
+	<sql id="get-product-list">
+		SELECT
+		p.*, NVL(t.tran_status_code,0) tran_status_code
+		FROM product p, transaction t
+		WHERE p.prod_no=t.prod_no(+)
+		<if test="search.searchCondition!=null and search.searchKeyword!=''">
+			<if test="search.searchCondition==0">
+				AND p.prod_no LIKE #{search.searchKeyword}
+			</if>
+			<if test="search.searchCondition==1">
+				AND p.prod_name LIKE #{search.searchKeyword}
+			</if>
+			<if test="search.searchCondition==2">
+				AND p.price LIKE #{search.searchKeyword}
+			</if>
+			<if test="search.searchCondition==-1">
+				AND t.tran_no LIKE #{search.searchKeyword}
+			</if>
+		</if>
+		ORDER BY p.${sort}
+	</sql>
+
+	<select id="getProductList" parameterType="map" resultMap="productMap">
+		SELECT *
+	 	FROM ( 	SELECT inner_table.*, ROWNUM AS row_seq
+	 			  	FROM ( <include refid="get-product-list"/> ) inner_table
+		 			WHERE <![CDATA[ROWNUM <= ${search.currentPage*search.pageSize}]]> )
+	 	WHERE row_seq BETWEEN ${(search.currentPage-1)*search.pageSize+1} AND ${search.currentPage*search.pageSize}
+	</select>
+	
+	<select id="getTotalCount" parameterType="search" resultType="int">
+		SELECT COUNT(*)
+		FROM (  SELECT
+					p.*, NVL(t.tran_status_code,0) tran_status_code
+					FROM product p, transaction t
+					WHERE p.prod_no=t.prod_no(+)
+					<if test="searchCondition!=null and searchKeyword!=''">
+						<if test="searchCondition==0">
+							AND p.prod_no LIKE #{searchKeyword}
+						</if>
+						<if test="searchCondition==1">
+							AND p.prod_name LIKE #{searchKeyword}
+						</if>
+						<if test="searchCondition==2">
+							AND p.price LIKE #{searchKeyword}
+						</if>
+						<if test="searchCondition==-1">
+							AND t.tran_no LIKE #{searchKeyword}
+						</if>
+					</if>  ) countTable
+	</select>
+
+
+</mapper>
