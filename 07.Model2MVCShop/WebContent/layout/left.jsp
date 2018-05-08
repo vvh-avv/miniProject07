@@ -26,13 +26,13 @@ function history(){
 				<table border="0" cellspacing="0" cellpadding="0" width="159">
 					<c:if test="${ !empty sessionScope.user }">
 						<tr>
-							<td class="Depth03"><a href="/getUser.do?userId=${user.userId}" target="rightFrame">개인정보조회</a></td>
+							<td class="Depth03"><a href="/user/getUser?userId=${user.userId}" target="rightFrame">개인정보조회</a></td>
 						</tr>
 					</c:if>
 
 					<c:if test="${!empty sessionScope.user && user.role=='admin'}">
 						<tr>
-							<td class="Depth03"><a href="/listUser.do" target="rightFrame">회원정보조회</a>	</td>
+							<td class="Depth03"><a href="/user/listUser" target="rightFrame">회원정보조회</a>	</td>
 						</tr>
 					</c:if>
 
@@ -52,7 +52,7 @@ function history(){
 							<td class="Depth03"><a href="/product/addProductView.jsp" target="rightFrame">판매상품등록</a></td>
 						</tr>
 						<tr>
-							<td class="Depth03"><a href="/listProduct.do?menu=manage" target="rightFrame">판매상품관리</a></td>
+							<td class="Depth03"><a href="/product/listProduct?menu=manage" target="rightFrame">판매상품관리</a></td>
 						</tr>
 						<tr>
 							<td class="DepthEnd">&nbsp;</td>
@@ -67,12 +67,12 @@ function history(){
 			<td valign="top">
 				<table border="0" cellspacing="0" cellpadding="0" width="159">
 					<tr>
-						<td class="Depth03"><a href="/listProduct.do?menu=search" target="rightFrame">상 품 검 색</a></td>
+						<td class="Depth03"><a href="/product/listProduct?menu=search" target="rightFrame">상 품 검 색</a></td>
 					</tr>
 
 					<c:if test="${!empty sessionScope.user && user.role=='user'}">
 						<tr>
-							<td class="Depth03"><a href="/listPurchase.do" target="rightFrame">구매이력조회</a></td>
+							<td class="Depth03"><a href="/purchase/listPurchase" target="rightFrame">구매이력조회</a></td>
 						</tr>
 					</c:if>
 
@@ -96,7 +96,7 @@ function history(){
 					</tr>
 					<tr>
 						<td class="Depth03">
-							<a href="/statsUser.do" target="rightFrame">회원통계</a>
+							<a href="/user/statsUser" target="rightFrame">회원통계</a>
 						</td>
 					</tr>
 					<tr>

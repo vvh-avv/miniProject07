@@ -19,7 +19,7 @@ window.onload = function(){
 
 function fncCheckDuplication() {
 	if(document.detailForm.userId.value != null && document.detailForm.userId.value.length >0) {
-	    document.detailForm.action='/checkDuplication.do';
+	    document.detailForm.action='/user/checkDuplication';
 	    document.detailForm.submit();
 	}else {
 		alert('아이디는 반드시 입력하셔야 합니다.');

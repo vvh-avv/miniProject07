@@ -44,7 +44,7 @@
 
 <body bgcolor="#ffffff" text="#000000">
 
-	<form name="loginForm" method="post" action="/login.do"
+	<form name="loginForm" method="post" action="/user/login"
 		target="_parent">
 
 		<div align="center">

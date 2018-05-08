@@ -24,7 +24,7 @@
 
 	<div style="width: 98%; margin-left: 10px;">
 
-		<form name="detailForm" action="/listUser.do" method="post">
+		<form name="detailForm" action="/user/listUser" method="post">
 
 			<table width="100%" height="37" border="0" cellpadding="0"
 				cellspacing="0">
@@ -82,11 +82,11 @@
 					<td class="ct_line02"></td>
 					<td class="ct_list_b" width="150">회원ID <c:choose>
 							<c:when test="${requestScope.sort=='asc'}">
-								<a onclick="location.href='/listUser.do?sort=desc'"
+								<a onclick="location.href='/user/listUser?sort=desc'"
 									style="cursor: pointer"> ↓ </a>
 							</c:when>
 							<c:otherwise>
-								<a onclick="location.href='/listUser.do?sort=asc'"
+								<a onclick="location.href='/user/listUser?sort=asc'"
 									style="cursor: pointer"> ↑ </a>
 							</c:otherwise>
 						</c:choose>
@@ -110,7 +110,7 @@
 					<tr class="ct_list_pop">
 						<td align="center">${ i }</td>
 						<td></td>
-						<td align="left"><a href="/getUser.do?userId=${user.userId}">${user.userId}</a>
+						<td align="left"><a href="/user/getUser?userId=${user.userId}">${user.userId}</a>
 						</td>
 						<td></td>
 						<td align="left">${user.userName}</td>
@@ -118,7 +118,7 @@
 						<td align="left">${user.email}</td>
 						<td></td>
 						<td align="left"><input type="button"
-							onclick="location.	href='/listPurchase.do?userId=${user.userId}'"
+							onclick="location.	href='/purchase/listPurchase?userId=${user.userId}'"
 							value="주문내역"></td>
 					</tr>
 					<tr>

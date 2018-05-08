@@ -29,7 +29,7 @@
 					<tr>
 						<td width="215">
 							<!-- 로그인을 했다면 --> <c:if test="${!empty user}">
-								<a href="/getUser.do?userId=${user.userId}" target="rightFrame">${user.userId}</a> 님 안녕하세요!
+								<a href="/user/getUser?userId=${user.userId}" target="rightFrame">${user.userId}</a> 님 안녕하세요!
 	          	</c:if>
 
 						</td>
@@ -38,7 +38,7 @@
 							<!-- 로그인 세션이 존재하지 않으면, 로그인을 안했다면 --> <c:if test="${empty user}">
 								<a href="/user/loginView.jsp" target="rightFrame">LOGIN</a>
 							</c:if> <c:if test="${!empty user}">
-								<a href="/logout.do" target="_parent">LOGOUT</a>
+								<a href="/user/logout" target="_parent">LOGOUT</a>
 							</c:if>
 
 						</td>

@@ -27,7 +27,7 @@ function fncQuitCheck() {
 	}else{
 		if(chkValue=='±‚≈∏') { chkValue = document.detailForm.reasonText.value; }
 		
-		document.detailForm.action='/quitUser.do?userId=${user.userId}&reason='+chkValue;
+		document.detailForm.action='/user/quitUser?userId=${user.userId}&reason='+chkValue;
 	    document.detailForm.submit();
 	    
 	    top.opener.location="/user/loginView.jsp"
