@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -11,11 +10,6 @@
 
 <script type="text/javascript">
 <!--
-/*
-function fncGetList(){
-	document.detailForm.submit();
-}
-*/
 
 // page
 function fncGetList(currentPage) {
@@ -83,7 +77,7 @@ function stateSubmit(){
 		alert("상품을 선택 후 처리해주세요.");
 	}else{
 		var conChk = confirm(prodNo+" 상품을 "+state+"처리 하시겠습니까?");
-		if(conChk){			
+		if(conChk){	
 			switch(stateIndex){
 				case 0 : //배송중처리
 					if(tranCode.indexOf("1")==-1) { alert("배송중 처리가 불가합니다."); break; } //유효성 체크
@@ -205,8 +199,7 @@ function stateSubmit(){
 								<option value="배송중">배송중</option>
 								<option value="반품처리">반품처리</option>
 								<option value="반품거절">반품거절</option>
-							</select>
-							&nbsp;
+							</select> &nbsp;
 							<input type="button" value="처리" onclick="stateSubmit();">
 						</td>
 					</tr>

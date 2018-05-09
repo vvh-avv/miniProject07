@@ -41,7 +41,7 @@ public class LogonCheckInterceptor extends HandlerInterceptorAdapter {
 		User user = (User)session.getAttribute("user");
 
 		//==> 로그인한 회원이라면...
-		if(   user != null   )  {
+		if(   user != null   )  { 
 			//==> 로그인 상태에서 접근 불가 URI
 			String uri = request.getRequestURI();
 			if(		uri.indexOf("addUserView") != -1 	|| 	uri.indexOf("addUser") != -1 || 

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -10,12 +9,8 @@
 
 <body>
 
-	<form name="updatePurchase"
-		action="/updatePurchaseView.do?tranNo=${purchase.tranNo}"
-		method="post">
-
+	<form name="updatePurchase" action="/purchase/updatePurchase?tranNo=${purchase.tranNo}" method="post">
 		다음과 같이 구매가 되었습니다.
-
 		<table border=1>
 			<tr>
 				<td>물품번호</td>
@@ -29,11 +24,14 @@
 			</tr>
 			<tr>
 				<td>구매방법</td>
-				<td><c:if test="${purchase.paymentOption=='1'}">
-			현금구매
-		</c:if> <c:if test="${purchase.paymentOption=='2'}">
-			신용구매
-		</c:if></td>
+				<td>
+				<c:if test="${purchase.paymentOption=='1'}">
+					현금구매
+				</c:if>
+				<c:if test="${purchase.paymentOption=='2'}">
+					신용구매
+				</c:if>
+				</td>
 				<td></td>
 			</tr>
 			<tr>
@@ -65,8 +63,7 @@
 	</form>
 
 	<br>
-	<input type="button" value="구매상세조회"
-		onclick="/GetPurchase.do?tranNo=${purchase.tranNo}">
+	<input type="button" value="구매상세조회" onclick="/purchase/GetPurchase?tranNo=${purchase.tranNo}">
 
 
 </body>

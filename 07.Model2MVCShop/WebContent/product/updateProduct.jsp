@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 
 <html>
 <head>
@@ -40,7 +39,7 @@ function fncAddProduct(){
 	document.detailForm.submit();
 }
 
-//가격에 단위콤마 찍는 스크립트
+/*가격에 단위콤마 찍는 스크립트
 //출처 : https://kin.naver.com/qna/detail.nhn?d1id=1&dirId=1040205&docId=68405952
 function FormatNumber2(num){
 	fl=""
@@ -70,6 +69,7 @@ function FormatNumber3(num){
 	num=num.replace(/,/gi,"")
 	return FormatNumber2(num)
 }
+*/
 -->
 </script>
 </head>
@@ -100,8 +100,7 @@ function FormatNumber3(num){
 				<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 			</tr>
 			<tr>
-				<td width="104" class="ct_write">상품명 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle" />
-				</td>
+				<td width="104" class="ct_write"> 상품명 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle" /> </td>
 				<td bgcolor="D6D6D6" width="1"></td>
 				<td class="ct_write01">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -128,12 +127,11 @@ function FormatNumber3(num){
 				<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 			</tr>
 			<tr>
-				<td width="104" class="ct_write">제조일자 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle" />
-				</td>
+				<td width="104" class="ct_write">제조일자 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle" /> </td>
 				<td bgcolor="D6D6D6" width="1"></td>
 				<td class="ct_write01">
 					<input type="text" readonly="readonly" name="manuDate" value="${product.manuDate}" class="ct_input_g" style="width: 100px; height: 19px" maxLength="10" minLength="6">
-						&nbsp;
+					&nbsp;
 					<img src="../images/ct_icon_date.gif" width="15" height="15" onclick="show_calendar('document.detailForm.manuDate', document.detailForm.manuDate.value)" />
 				</td>
 			</tr>
@@ -141,12 +139,10 @@ function FormatNumber3(num){
 				<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 			</tr>
 			<tr>
-				<td width="104" class="ct_write">가격 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle" />
-				</td>
+				<td width="104" class="ct_write">가격 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle" /> </td>
 				<td bgcolor="D6D6D6" width="1"></td>
-				<td class="ct_write01">
-					<input type="text" name="price" value="${product.price}" class="ct_input_g" style="width: 100px; height: 19px"
-							maxLength="50" onkeyup="this.value=FormatNumber3(this.value)" />&nbsp;원
+				<td class="ct_write01">													<!--onkeyup="this.value=FormatNumber3(this.value)"-->
+					<input type="text" name="price" value="${product.price}" class="ct_input_g" style="width: 100px; height: 19px" maxLength="50" />&nbsp;원
 				</td>
 			</tr>
 			<tr>

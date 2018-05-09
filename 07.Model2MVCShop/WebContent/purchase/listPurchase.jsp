@@ -24,7 +24,7 @@
 
 	<div style="width: 98%; margin-left: 10px;">
 
-		<form name="detailForm" action="/listPurchase.do" method="post">
+		<form name="detailForm" action="/purchase/listPurchase" method="post">
 
 			<table width="100%" height="37" border="0" cellpadding="0" cellspacing="0">
 				<tr>
@@ -88,10 +88,10 @@
 					<td class="ct_list_b" width="100">주문일자 <!-- 주문일자 기준 소팅기능 추가 -->
 						<c:choose>
 							<c:when test="${requestScope.sort=='asc'}">
-								<a onclick="location.href='/listPurchase.do?sort=desc';" style="cursor: pointer"> ↓ </a>
+								<a onclick="location.href='/purchase/listPurchase?sort=desc';" style="cursor: pointer"> ↓ </a>
 							</c:when>
 							<c:otherwise>
-								<a onclick="location.href='/listPurchase.do?sort=asc';" style="cursor: pointer"> ↑ </a>
+								<a onclick="location.href='/purchase/listPurchase?sort=asc';" style="cursor: pointer"> ↑ </a>
 							</c:otherwise>
 						</c:choose> <!-- 주문일자 기준 소팅기능 끝 -->
 
@@ -128,12 +128,12 @@
 						<td></td>
 
 						<td align="center">
-							<a href="/getPurchase.do?tranNo=${purchase.tranNo}">${purchase.tranNo}</a>
+							<a href="/purchase/getPurchase?tranNo=${purchase.tranNo}">${purchase.tranNo}</a>
 						</td>
 						<td></td>
 
 						<td align="center">
-							<a href="/updateProductView.do?prodNo=${purchase.purchaseProd.prodNo}&menu=search">${purchase.purchaseProd.prodName}</a>
+							<a href="/product/updateProduct?prodNo=${purchase.purchaseProd.prodNo}&menu=search">${purchase.purchaseProd.prodName}</a>
 						</td>
 						<td></td>
 
@@ -157,20 +157,20 @@
 								<c:when test="${purchase.tranCode=='1'}">
 									현재 구매완료 상태입니다.
 									<!-- 0418 취소 기능 추가 -->
-									<a href="/updateTranCode.do?tranNo=${purchase.tranNo}&tranCode=-1"><font color='red'>주문취소</font></a>
+									<a href="/purchase/updateTranCode?tranNo=${purchase.tranNo}&tranCode=-1"><font color='red'>주문취소</font></a>
 								</c:when>
 
 								<c:when test="${purchase.tranCode=='2'}">
 									현재 배송중 상태입니다.
-									<a href="/updateTranCode.do?tranNo=${purchase.tranNo}&tranCode=3"><font color='blue'>물건도착</font></a>
+									<a href="/purchase/updateTranCode?tranNo=${purchase.tranNo}&tranCode=3"><font color='blue'>물건도착</font></a>
 									<!-- 0418 취소 기능 추가 -->
-									<a href="/updateTranCode.do?tranNo=${purchase.tranNo}&tranCode=-2"><font color='red'>상품반품</font></a>
+									<a href="/purchase/updateTranCode?tranNo=${purchase.tranNo}&tranCode=-2"><font color='red'>상품반품</font></a>
 								</c:when>
 
 								<c:when test="${purchase.tranCode=='3'}">
 									현재 배송완료 상태입니다.
 									<!-- 0418 취소 기능 추가 -->
-									<a href="/updateTranCode.do?tranNo=${purchase.tranNo}&tranCode=-2"><font color='red'>상품반품</font></a>
+									<a href="/purchase/updateTranCode?tranNo=${purchase.tranNo}&tranCode=-2"><font color='red'>상품반품</font></a>
 								</c:when>
 
 								<c:when test="${purchase.tranCode=='-1'}">

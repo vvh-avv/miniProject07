@@ -12,10 +12,12 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.util.CookieGenerator;
 
 import com.model2.mvc.common.Page;
 import com.model2.mvc.common.Search;
@@ -58,10 +60,10 @@ public class ProductController {
 		return "forward:/product/getProduct.jsp";
 	}
 	
-	@RequestMapping(value="getProduct", method=RequestMethod.GET)
+	@RequestMapping(value="getProduct")
 	public String getProduct(@RequestParam("prodNo") int prodNo, Model model,
 									HttpServletRequest request, HttpServletResponse response) throws Exception{
-		System.out.println("/product/getProduct : GET");
+		System.out.println("/product/getProduct : GET / POST");
 		
 		Product product = productService.getProduct(prodNo);
 		model.addAttribute("product", product);
@@ -78,9 +80,13 @@ public class ProductController {
 			}
 		}
 		history += "," + product.getProdNo();
-		Cookie cookie = new Cookie("history",history);
-		response.addCookie(cookie);
-	
+
+		//Cookie cookie = new Cookie("history",history);
+		//response.addCookie(cookie);
+		CookieGenerator cg = new CookieGenerator();
+
+		cg.setCookieName("history");
+		cg.addCookie(response, history);
 		
 		return "forward:/product/detailProduct.jsp";
 	}
@@ -107,7 +113,8 @@ public class ProductController {
 		
 		productService.updateProduct(product);
 		
-		return "forward:/product/detailProduct.jsp";
+		//return "forward:/product/detailProduct.jsp";
+		return "forward:/product/getProduct?prodNo="+product.getProdNo();
 	}
 
 	@RequestMapping(value="listProduct")
