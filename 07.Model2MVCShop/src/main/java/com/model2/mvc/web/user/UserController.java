@@ -70,7 +70,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="updateUser", method=RequestMethod.GET)
-	public String updateUserView( @RequestParam("userId") String userId , Model model ) throws Exception{
+	public String updateUser( @RequestParam("userId") String userId , Model model ) throws Exception{
 		System.out.println("/user/updateUser : GET");
 		
 		User user = userService.getUser(userId);

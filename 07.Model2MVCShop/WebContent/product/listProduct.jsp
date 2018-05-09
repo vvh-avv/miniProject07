@@ -87,19 +87,19 @@ function stateSubmit(){
 			switch(stateIndex){
 				case 0 : //배송중처리
 					if(tranCode.indexOf("1")==-1) { alert("배송중 처리가 불가합니다."); break; } //유효성 체크
-					document.detailForm.action='/updateTranCodeByProd.do?prodNo='+prodNo+'&tranCode=2';
+					document.detailForm.action='/purchase/updateTranCodeByProd?prodNo='+prodNo+'&tranCode=2';
 					document.detailForm.submit();
 					alert("처리되었습니다.");
 					break;
 				case 1 : //반품처리
 					if(tranCode!=-2) { alert("반품처리가 불가합니다."); break; } //유효성 체크
-					document.detailForm.action='/updateTranCodeByProd.do?prodNo='+prodNo+'&tranCode=-3';
+					document.detailForm.action='/purchase/updateTranCodeByProd?prodNo='+prodNo+'&tranCode=-3';
 					document.detailForm.submit();
 					alert("처리되었습니다.");
 					break;
 				case 2 : //반품거절
 					if(tranCode!=-2) { alert("반품거절처리가 불가합니다."); break; } //유효성 체크
-					document.detailForm.action='/updateTranCodeByProd.do?prodNo='+prodNo+'&tranCode=${sessionScope.tranCodeTemp}';
+					document.detailForm.action='/purchase/updateTranCodeByProd?prodNo='+prodNo+'&tranCode=${sessionScope.tranCodeTemp}';
 					sessionScope.removeAttribute("tranCodeTemp");
 					document.detailForm.submit();
 					alert("처리되었습니다.");
@@ -118,7 +118,7 @@ function stateSubmit(){
 
 	<div style="width: 98%; margin-left: 10px;">
 
-		<form name="detailForm" action="/listProduct.do?menu=${param.menu=='manage'?'manage':'search'}" method="post">
+		<form name="detailForm" action="/product/listProduct?menu=${param.menu=='manage'?'manage':'search'}" method="post">
 
 			<table width="100%" height="37" border="0" cellpadding="0" cellspacing="0">
 				<tr>
@@ -234,19 +234,19 @@ function stateSubmit(){
 
 					<td class="ct_list_b" width="150">상품명
 						<c:if test="${requestScope.sort=='prod_no asc' || sort=='prod_name asc' || sort=='price asc' || sort=='price desc'}">
-							<a onclick="location.href='/listProduct.do?sort=prod_name+desc&menu=${param.menu}';" style="cursor: pointer"> ↓ </a>
+							<a onclick="location.href='/product/listProduct?sort=prod_name+desc&menu=${param.menu}';" style="cursor: pointer"> ↓ </a>
 						</c:if>
 						<c:if test="${requestScope.sort=='prod_name desc'}">
-							<a onclick="location.href='/listProduct.do?sort=prod_name+asc&menu=${param.menu}';" style="cursor: pointer"> ↑ </a>
+							<a onclick="location.href='/product/listProduct?sort=prod_name+asc&menu=${param.menu}';" style="cursor: pointer"> ↑ </a>
 						</c:if>
 					</td>
 					<td class="ct_line02"></td>
 					<td class="ct_list_b" width="150">가격
 						<c:if test="${requestScope.sort=='prod_no asc' || sort=='price asc' || sort=='prod_name asc' || sort=='prod_name desc'}">
-							<a onclick="location.href='/listProduct.do?sort=price+desc&menu=${param.menu}';" style="cursor: pointer"> ↓ </a>
+							<a onclick="location.href='/product/listProduct?sort=price+desc&menu=${param.menu}';" style="cursor: pointer"> ↓ </a>
 						</c:if>
 						<c:if test="${requestScope.sort=='price desc'}">
-							<a onclick="location.href='/listProduct.do?sort=price+asc&menu=${param.menu}';" style="cursor: pointer"> ↑ </a>
+							<a onclick="location.href='/product/listProduct?sort=price+asc&menu=${param.menu}';" style="cursor: pointer"> ↑ </a>
 						</c:if>
 
 					</td>
@@ -284,11 +284,11 @@ function stateSubmit(){
 						<td align="left">
 							<!-- 판매중 상품이라면 -->
 							<c:if test="${product.proTranCode=='0' || product.proTranCode=='-1'}">
-								<a href="${param.menu=='manage'?'/updateProductView.do':'/getProduct.do'}?prodNo=${product.prodNo}&menu=${param.menu}&status=0">${product.prodName}</a>
+								<a href="${param.menu=='manage'?'/product/updateProduct':'/product/getProduct'}?prodNo=${product.prodNo}&menu=${param.menu}&status=0">${product.prodName}</a>
 							</c:if>
 							<!-- 판매중 상품이 아니라면 -->
 							<c:if test="${product.proTranCode!='0' && product.proTranCode!='-1'}">
-								<a href="${param.menu=='manage'?'/updateProductView.do':'/getProduct.do'}?prodNo=${product.prodNo}&menu=${param.menu}">${product.prodName}</a>
+								<a href="${param.menu=='manage'?'/product/updateProduct':'/product/getProduct'}?prodNo=${product.prodNo}&menu=${param.menu}">${product.prodName}</a>
 							</c:if>
 
 						</td>

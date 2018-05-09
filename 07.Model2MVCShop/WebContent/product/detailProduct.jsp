@@ -28,13 +28,10 @@ function fncAlert(){
 
 	<form name="detailForm" method="post">
 
-		<table width="100%" height="37" border="0" cellpadding="0"
-			cellspacing="0">
+		<table width="100%" height="37" border="0" cellpadding="0" cellspacing="0">
 			<tr>
-				<td width="15" height="37"><img src="/images/ct_ttl_img01.gif"
-					width="15" height="37"></td>
-				<td background="/images/ct_ttl_img02.gif" width="100%"
-					style="padding-left: 10px;">
+				<td width="15" height="37"><img src="/images/ct_ttl_img01.gif" width="15" height="37"></td>
+				<td background="/images/ct_ttl_img02.gif" width="100%" style="padding-left: 10px;">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 						<tr>
 							<td width="93%" class="ct_ttl01">상품상세조회</td>
@@ -42,21 +39,16 @@ function fncAlert(){
 						</tr>
 					</table>
 				</td>
-				<td width="12" height="37"><img src="/images/ct_ttl_img03.gif"
-					width="12" height="37" /></td>
+				<td width="12" height="37"><img src="/images/ct_ttl_img03.gif" width="12" height="37" /></td>
 			</tr>
 		</table>
 
-		<table width="100%" border="0" cellspacing="0" cellpadding="0"
-			style="margin-top: 13px;">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 13px;">
 			<tr>
 				<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 			</tr>
 			<tr>
-				<td width="104" class="ct_write">상품번호 <img
-					src="/images/ct_icon_red.gif" width="3" height="3"
-					align="absmiddle" />
-				</td>
+				<td width="104" class="ct_write">상품번호 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle" /> </td>
 				<td bgcolor="D6D6D6" width="1"></td>
 				<td class="ct_write01">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -70,10 +62,7 @@ function fncAlert(){
 				<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 			</tr>
 			<tr>
-				<td width="104" class="ct_write">상품명 <img
-					src="/images/ct_icon_red.gif" width="3" height="3"
-					align="absmiddle" />
-				</td>
+				<td width="104" class="ct_write">상품명 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle" /> </td>
 				<td bgcolor="D6D6D6" width="1"></td>
 				<td class="ct_write01">${product.prodName}</td>
 			</tr>
@@ -81,22 +70,15 @@ function fncAlert(){
 				<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 			</tr>
 			<tr>
-				<td width="104" class="ct_write">상품이미지 <img
-					src="/images/ct_icon_red.gif" width="3" height="3"
-					align="absmiddle" />
-				</td>
+				<td width="104" class="ct_write">상품이미지 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle" /> </td>
 				<td bgcolor="D6D6D6" width="1"></td>
-				<td class="ct_write01">${product.fileName} <!-- <img src = "/images/uploadFiles/../../images/empty.GIF"/> -->
-				</td>
+				<td class="ct_write01">${product.fileName} <!-- <img src = "/images/uploadFiles/../../images/empty.GIF"/> --> </td>
 			</tr>
 			<tr>
 				<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 			</tr>
 			<tr>
-				<td width="104" class="ct_write">상품상세정보 <img
-					src="/images/ct_icon_red.gif" width="3" height="3"
-					align="absmiddle" />
-				</td>
+				<td width="104" class="ct_write">상품상세정보 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle" /> </td>
 				<td bgcolor="D6D6D6" width="1"></td>
 				<td class="ct_write01">${product.prodDetail}</td>
 			</tr>
@@ -129,8 +111,7 @@ function fncAlert(){
 			</tr>
 		</table>
 
-		<table width="100%" border="0" cellspacing="0" cellpadding="0"
-			style="margin-top: 10px;">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px;">
 			<tr>
 				<td width="53%"></td>
 				<td align="right">
@@ -139,31 +120,29 @@ function fncAlert(){
 						<tr>
 							<!-- 판매중 상품으로 파라미터값이 넘어왔으면 -->
 							<c:if test="${!empty param.status}">
-								<td width="17" height="23"><img
-									src="/images/ct_btnbg01.gif" width="17" height="23" /></td>
-								<td background="/images/ct_btnbg02.gif" class="ct_btn01"
-									style="padding-top: 3px;"><c:if
-										test="${empty sessionScope.user}">
+								<td width="17" height="23"><img src="/images/ct_btnbg01.gif" width="17" height="23" /></td>
+								<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top: 3px;">
+									<c:if test="${empty sessionScope.user}">
 										<a href="javascript:fncAlert();">구매</a>
-									</c:if> <c:if test="${!empty sessionScope.user}">
-										<a href="/addPurchaseView.do?prod_no=${product.prodNo}">구매</a>
-									</c:if></td>
-								<td width="14" height="23"><img
-									src="/images/ct_btnbg03.gif" width="14" height="23"></td>
+									</c:if>
+									<c:if test="${!empty sessionScope.user}">
+										<a href="/purchase/addPurchase?prod_no=${product.prodNo}">구매</a>
+									</c:if>
+								</td>
+								<td width="14" height="23"><img src="/images/ct_btnbg03.gif" width="14" height="23"></td>
 								<td width="30"></td>
 							</c:if>
 
-							<td width="17" height="23"><img src="/images/ct_btnbg01.gif"
-								width="17" height="23" /></td>
-							<td background="/images/ct_btnbg02.gif" class="ct_btn01"
-								style="padding-top: 3px;"><c:if test="${empty product}">
+							<td width="17" height="23"><img src="/images/ct_btnbg01.gif" width="17" height="23" /></td>
+							<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top: 3px;">
+								<c:if test="${empty product}">
 									<a href="javascript:history.go(-1)">이전</a>
-								</c:if> <c:if test="${!empty product}">
-									<a href="/listProduct.do?menu=manage">확인</a>
-								</c:if></td>
-
-							<td width="14" height="23"><img src="/images/ct_btnbg03.gif"
-								width="14" height="23" /></td>
+								</c:if>
+								<c:if test="${!empty product}">
+									<a href="/product/listProduct?menu=manage">확인</a>
+								</c:if>
+							</td> 
+							<td width="14" height="23"><img src="/images/ct_btnbg03.gif" width="14" height="23" /></td>
 						</tr>
 					</table>
 
