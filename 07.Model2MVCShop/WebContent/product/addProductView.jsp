@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 
 <html>
 <head>
@@ -80,7 +79,7 @@ function FormatNumber3(num){
 
 <body bgcolor="#ffffff" text="#000000">
 
-	<form name="detailForm" method="post">
+	<form name="detailForm" method="post" enctype="multipart/form-data">
 
 		<table width="100%" height="37" border="0" cellpadding="0" cellspacing="0">
 			<tr>
@@ -150,7 +149,7 @@ function FormatNumber3(num){
 			<tr>
 				<td width="104" class="ct_write">상품이미지</td>
 				<td bgcolor="D6D6D6" width="1"></td>
-				<td class="ct_write01"><input type="text" name="fileName" class="ct_input_g" style="width: 200px; height: 19px" maxLength="13" /></td>
+				<td class="ct_write01"><input type="file" name="file" class="ct_input_g" style="width: 200px; height: 19px" maxLength="13" /></td>
 			</tr>
 			<tr>
 				<td height="1" colspan="3" bgcolor="D6D6D6"></td>

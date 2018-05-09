@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html>
 <head>
@@ -89,7 +90,16 @@
 				<!-- 테이블 시작 -->
 				<table border="0" cellspacing="0" cellpadding="0">
 					<tr>
-						<td height="26">${product.fileName} <!-- <img src="/images/uploadFiles/../../images/empty.GIF"/> -->
+						<td height="26">
+							<!-- 파일명 확인 <c:out value="*${product.fileName}*"/> -->
+							<c:choose>
+								<c:when test="${!empty product.fileName && product.fileName!=' '}">
+									<img src = "/images/uploadFiles/${product.fileName}">
+								</c:when>
+								<c:otherwise>									
+									<img src = "/images/empty.GIF">
+								</c:otherwise>
+							</c:choose>
 						</td>
 					</tr>
 				</table>

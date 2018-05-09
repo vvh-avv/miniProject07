@@ -1,12 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<!-- 이걸 안써주면 가끔 상품상세조회로 넘어가야할 때 상품수정으로 넘어감
-<c:if test="${empty product}">
-	<c:set var="product" value="${productVO}" scope="request" />
-</c:if> -->
 
 <html>
 <head>
@@ -72,7 +66,17 @@ function fncAlert(){
 			<tr>
 				<td width="104" class="ct_write">상품이미지 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle" /> </td>
 				<td bgcolor="D6D6D6" width="1"></td>
-				<td class="ct_write01">${product.fileName} <!-- <img src = "/images/uploadFiles/../../images/empty.GIF"/> --> </td>
+				<td class="ct_write01">
+					<!-- 파일명 확인 <c:out value="*${product.fileName}*"/> -->
+					<c:choose>
+						<c:when test="${!empty product.fileName && product.fileName!=' '}">
+							<img src = "/images/uploadFiles/${product.fileName}">
+						</c:when>
+						<c:otherwise>									
+							<img src = "/images/empty.GIF">
+						</c:otherwise>
+					</c:choose>
+				</td>
 			</tr>
 			<tr>
 				<td height="1" colspan="3" bgcolor="D6D6D6"></td>

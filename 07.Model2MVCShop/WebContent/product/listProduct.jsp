@@ -291,8 +291,8 @@ function stateSubmit(){
 						<td align="left">${product.regDate}</td>
 						<td></td>
 						<td align="left">
-							<!-- 어드민으로 접속했을 경우 --> <c:if
-								test="${!empty user && user.role=='admin'}">
+							<!-- 어드민으로 접속했을 경우 -->
+							<c:if test="${!empty user && user.role=='admin'}">
 								<c:choose>
 									<c:when test="${product.proTranCode=='0' || product.proTranCode=='-1'}">
 										판매중
